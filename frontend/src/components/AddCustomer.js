@@ -20,7 +20,7 @@ const AddCustomer = () => {
       const customerId = `TAM${cId}`;
 
       await axios.post(
-        "http://localhost:5000/api/customers/create",
+        "https://cablebill-backend.onrender.com/api/customers/create",
         { cId: customerId, name, setupBoxNo, phone, address },
         { headers: { Authorization: `Bearer ${token}` } }
       );
