@@ -19,7 +19,7 @@ const Reports = () => {
   const fetchCollectionReport = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:5000/api/reports/collection",
+        "https://cablebill-backend.onrender.com/api/reports/collection",
         {
           params: { from, to },
           headers: { Authorization: `Bearer ${token}` },
@@ -35,7 +35,7 @@ const Reports = () => {
   // 🔹 Fetch Monthly Report
   const fetchMonthlyReport = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/reports/monthly", {
+      const res = await axios.get("https://cablebill-backend.onrender.com/api/reports/monthly", {
         params: { year, month },
         headers: { Authorization: `Bearer ${token}` },
       });
@@ -49,7 +49,7 @@ const Reports = () => {
   // 🔹 Fetch Unpaid Customers
   const fetchUnpaidReport = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/reports/unpaid", {
+      const res = await axios.get("https://cablebill-backend.onrender.com/api/reports/unpaid", {
         params: { year, month },
         headers: { Authorization: `Bearer ${token}` },
       });
