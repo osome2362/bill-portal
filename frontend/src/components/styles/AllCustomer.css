@@ -1,0 +1,106 @@
+.all-customer-container {
+  padding: 40px;
+  background: linear-gradient(135deg, #f3f4f6, #e2e8f0);
+  min-height: 100vh;
+}
+
+.page-title {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: #1f2937;
+  letter-spacing: 0.5px;
+}
+
+/* ✅ Vertical list */
+.customer-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* Customer Card */
+.customer-list-item {
+  display: flex;
+  align-items: center;
+  background: white;
+  border-radius: 12px;
+  padding: 18px 22px;
+  box-shadow: 0px 3px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s;
+}
+
+.customer-list-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.12);
+  background: #f9fafb;
+}
+
+.customer-list-img {
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 20px;
+  border: 2px solid #2563eb;
+}
+
+/* Customer Info */
+.customer-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.customer-name {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #111827;
+  margin: 0;
+}
+
+.customer-id {
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+.customer-email {
+  font-size: 0.95rem;
+  color: #374151;
+}
+
+.customer-phone {
+  font-size: 0.9rem;
+  color: #4b5563;
+  font-style: italic;
+}
+
+/* ✅ Search Bar */
+.search-input {
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto 25px auto;
+  display: block;
+  padding: 12px 16px;
+  font-size: 16px;
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  outline: none;
+  background: #fff;
+  transition: 0.3s;
+}
+
+.search-input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 8px rgba(37, 99, 235, 0.3);
+}
+
+/* No results message */
+.no-results {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #6b7280;
+}

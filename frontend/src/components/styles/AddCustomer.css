@@ -1,0 +1,134 @@
+/* ===== Navbar Fix ===== */
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+/* ===== Centered Form ===== */
+.add-customer-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  background: linear-gradient(135deg, #d5d7d8, #00f2fe);
+  margin-top: 60px; /* push below fixed navbar */
+}
+
+/* ===== Card Style ===== */
+.form-card {
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  max-width: 450px;
+  width: 100%;
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+.form-card h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+  font-size: 24px;
+}
+
+/* ===== Form Fields ===== */
+.customer-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.customer-form input,
+.customer-form textarea {
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+.customer-form input:focus,
+.customer-form textarea:focus {
+  border-color: #4facfe;
+  outline: none;
+  box-shadow: 0 0 5px rgba(79, 172, 254, 0.5);
+}
+
+/* ===== Customer ID Prefix Field ===== */
+.customer-id-input {
+  display: flex;
+  align-items: center;
+}
+
+.customer-id-input .prefix {
+  background: #eee;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-right: none;
+  border-radius: 8px 0 0 8px;
+  font-weight: bold;
+  font-size: 16px;
+  color: #333;
+}
+
+.customer-id-input input {
+  flex: 1;
+  border-radius: 0 8px 8px 0;
+  border: 1px solid #ddd;
+  border-left: none;
+  padding: 12px;
+  font-size: 16px;
+}
+
+/* ===== Button ===== */
+.customer-form button {
+  background: linear-gradient(135deg, #43e97b, #38f9d7);
+  border: none;
+  padding: 14px;
+  font-size: 16px;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.customer-form button:hover {
+  background: linear-gradient(135deg, #38f9d7, #43e97b);
+  transform: translateY(-2px);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 500px) {
+  .form-card {
+    padding: 20px;
+  }
+  .form-card h2 {
+    font-size: 20px;
+  }
+  .customer-form input,
+  .customer-form textarea {
+    font-size: 14px;
+  }
+}
+
+/* ===== Animation ===== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

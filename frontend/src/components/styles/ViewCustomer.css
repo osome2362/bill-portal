@@ -1,0 +1,120 @@
+.view-customer-container {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 20px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.back-btn {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+.back-btn:hover {
+  background: #0056b3;
+}
+
+/* Profile Card */
+.customer-profile-card {
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+}
+
+.customer-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 25px;
+  border: 3px solid #007bff;
+}
+
+.customer-details {
+  flex: 1;
+}
+
+.customer-name {
+  margin: 0;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+}
+
+.customer-details p {
+  margin: 6px 0;
+  color: #555;
+  font-size: 16px;
+}
+
+/* Transactions */
+.transactions-section {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.section-title {
+  font-size: 20px;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.transaction-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.transaction-table th,
+.transaction-table td {
+  padding: 12px;
+  border: 1px solid #ddd;
+  text-align: center;
+  font-size: 15px;
+}
+
+.transaction-table th {
+  background: #007bff;
+  color: white;
+}
+
+.transaction-table tr:nth-child(even) {
+  background: #f9f9f9;
+}
+
+.no-transactions {
+  text-align: center;
+  color: #999;
+  margin-top: 15px;
+  font-style: italic;
+}
+
+.actions {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.collect-btn {
+  background: #28a745;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: 0.3s ease;
+}
+
+.collect-btn:hover {
+  background: #218838;
+}
