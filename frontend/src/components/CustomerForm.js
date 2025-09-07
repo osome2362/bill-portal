@@ -23,7 +23,7 @@ const CustomerForm = () => {
 
         const tokenkey = localStorage.getItem("token");
       const response = await axios.post(
-        "http://172.17.107.63:5001/api/customers/create",
+        "https://cablebill-backend.onrender.com/api/customers/create",
         customer,
         {
           headers: { token: {tokenkey} }, // Replace with actual token
@@ -53,3 +53,4 @@ const CustomerForm = () => {
 };
 
 export default CustomerForm;
+
