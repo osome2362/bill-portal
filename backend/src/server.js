@@ -397,4 +397,39 @@ app.get("/api/reports/unpaid", async (req, res) => {
   }
 });
 
+
+//Daily Report of data for day collection
+
+app.get("/api/reports/today", authentic, async (req, res) => {
+  try {
+    const startOfDay = dayjs().startOf("day").toDate();
+    const endOfDay = dayjs().endOf("day").toDate();
+
+    const customers = await customerdata
+      .find({
+        "transactions.date": { $gte: startOfDay, $lte: endOfDay },
+        "transactions.status": "Paid",
+      })
+      .lean();
+
+    let total = 0;
+    customers.forEach((c) => {
+      c.transactions.forEach((t) => {
+        if (t.status === "Paid" && t.date >= startOfDay && t.date <= endOfDay) {
+          total += t.amount;
+        }
+      });
+    });
+
+    res.json({
+      date: dayjs().format("YYYY-MM-DD"),
+      totalCollected: total,
+    });
+  } catch (error) {
+    console.error("Error generating today's total:", error);
+    res.status(500).json({ message: "Server error" });
+  }
+});
+
 app.listen(5000, () => console.log("Server Running..."));
+
