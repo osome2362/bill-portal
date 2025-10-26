@@ -43,7 +43,7 @@ const ViewCustomer = () => {
       const token = localStorage.getItem("token");
 
       const res = await axios.post(
-        "https://cablebill-backend.onrender.com0/api/customers/transaction",
+        "https://cablebill-backend.onrender.com/api/customers/transaction",
         { cId, amount, status: "Paid" },
         { headers: { Authorization: `Bearer ${token}` } }
       );
