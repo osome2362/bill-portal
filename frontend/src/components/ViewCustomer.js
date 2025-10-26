@@ -6,7 +6,7 @@ import "./styles/ViewCustomer.css";
 
 const ViewCustomer = () => {
   const { cId } = useParams();
-  const navigate = useNavigate();
+  const navigate = useNavigate(); 
   const [customer, setCustomer] = useState(null);
   const [loading, setLoading] = useState(true);
   const [collecting, setCollecting] = useState(false);
