@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Navbar from "./Navbar";
 import { Bar } from "react-chartjs-2";
@@ -24,10 +25,27 @@ ChartJS.register(
 
 const Dashboard = () => {
   const navigate = useNavigate();
+  const [todayCollected, setTodayCollected] = useState(0);
 
-  // Example values (you can fetch from API later)
-  const todayCollected = 1250; // ₹ collected today
-  const monthlyData = [5000, 8000, 6500, 9000, 7000, 10000]; // last 6 months
+  useEffect(() => {
+    const fetchTodayReport = async () => {
+      try {
+        const token = localStorage.getItem("token");
+        const res = await axios.get("http://localhost:5000/api/reports/today", {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        // ✅ Use the correct key from backend response
+        setTodayCollected(res.data.totalCollected || 0);
+      } catch (error) {
+        console.error("Error fetching today's report:", error);
+      }
+    };
+
+    fetchTodayReport();
+  }, []);
+
+  // Example placeholder data for chart
+  const monthlyData = [5000, 8000, 6500, 9000, 7000, 10000];
 
   const cards = [
     { title: "Add Customer", path: "/addcustomer" },
