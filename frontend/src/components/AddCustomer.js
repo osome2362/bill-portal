@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import Navbar from "./Navbar";
-import "./styles/AddCustomer.css"; // <-- Import CSS file
+import "./styles/AddCustomer.css"; 
 
 const AddCustomer = () => {
   const [cId, setCId] = useState("");
@@ -9,14 +10,43 @@ const AddCustomer = () => {
   const [setupBoxNo, setSetupBoxNo] = useState("");
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
+  const navigate = useNavigate();
+
+  // ✅ Fetch last customer to generate next ID
+  useEffect(() => {
+    const fetchNextId = async () => {
+      try {
+        const token = localStorage.getItem("token");
+        const res = await axios.get("https://cablebill-backend.onrender.com/allcustomers", {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+
+        const customers = res.data.filteredCustomers || [];
+        if (customers.length === 0) {
+          setCId("01");
+        } else {
+          // Get highest numeric part of cId
+          const lastId = customers
+            .map(c => parseInt(c.cId.replace("TAM", ""), 10))
+            .sort((a, b) => b - a)[0];
+
+          const nextId = (lastId + 1).toString().padStart(2, "0");
+          setCId(nextId);
+        }
+      } catch (err) {
+        console.error("Error fetching customers:", err);
+        setCId("01"); // fallback
+      }
+    };
+
+    fetchNextId();
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
       const token = localStorage.getItem("token");
-
-      // Always add TAM prefix before sending
       const customerId = `TAM${cId}`;
 
       await axios.post(
@@ -27,12 +57,14 @@ const AddCustomer = () => {
 
       alert("✅ Customer added successfully");
 
-      // Reset form
-      setCId("");
+      // Reset form and generate next ID
       setName("");
       setSetupBoxNo("");
       setPhone("");
       setAddress("");
+
+      const nextId = (parseInt(cId, 10) + 1).toString().padStart(2, "0");
+      setCId(nextId);
     } catch (error) {
       console.error("Error adding customer", error);
       alert("❌ Failed to add customer");
@@ -44,17 +76,20 @@ const AddCustomer = () => {
       <Navbar />
       <div className="add-customer-container">
         <div className="form-card">
+          {/* ✅ Back Button */}
+          <button className="back-btn" onClick={() => navigate(-1)}>
+            ← Back
+          </button>
+
           <h2>Add New Customer</h2>
           <form onSubmit={handleSubmit} className="customer-form">
-            {/* Customer ID input with fixed TAM prefix */}
+            {/* Auto-generated Customer ID */}
             <div className="customer-id-input">
               <span className="prefix">TAM</span>
               <input
-                type="number"
-                placeholder="Enter ID number"
+                type="text"
                 value={cId}
-                onChange={(e) => setCId(e.target.value)}
-                required
+                readOnly
               />
             </div>
 
