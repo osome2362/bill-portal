@@ -31,7 +31,7 @@ const Dashboard = () => {
     const fetchTodayReport = async () => {
       try {
         const token = localStorage.getItem("token");
-        const res = await axios.get("http://localhost:5000/api/reports/today", {
+        const res = await axios.get("https://cablebill-backend.onrender.com/api/reports/today", {
           headers: { Authorization: `Bearer ${token}` },
         });
         // ✅ Use the correct key from backend response
