@@ -22,7 +22,7 @@ const ViewCustomer = () => {
   const fetchCustomer = useCallback(async () => {
     try {
       const token = localStorage.getItem("token");
-      const res = await axios.get(`http://localhost:5000/viewcustomer/${cId}`, {
+      const res = await axios.get(`https://cablebill-backend.onrender.com0/viewcustomer/${cId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setCustomer(res.data);
