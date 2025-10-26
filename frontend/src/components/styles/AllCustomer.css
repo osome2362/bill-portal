@@ -1,106 +1,170 @@
+/* ---------- Container ---------- */
 .all-customer-container {
-  padding: 40px;
-  background: linear-gradient(135deg, #f3f4f6, #e2e8f0);
+  padding: 16px 12px;
+  background: linear-gradient(145deg, #f9fafb, #eef2f7);
   min-height: 100vh;
+  font-family: "Inter", "Segoe UI", Roboto, sans-serif;
 }
 
+/* ---------- Page Title ---------- */
 .page-title {
   text-align: center;
-  margin-bottom: 30px;
-  font-size: 2.2rem;
-  font-weight: 600;
-  color: #1f2937;
-  letter-spacing: 0.5px;
+  margin: 10px 0 18px;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #1e293b;
+  letter-spacing: 0.3px;
 }
 
-/* ✅ Vertical list */
-.customer-list {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-}
-
-/* Customer Card */
-.customer-list-item {
-  display: flex;
-  align-items: center;
-  background: white;
-  border-radius: 12px;
-  padding: 18px 22px;
-  box-shadow: 0px 3px 12px rgba(0, 0, 0, 0.08);
-  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s;
-}
-
-.customer-list-item:hover {
-  transform: translateY(-4px);
-  box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.12);
-  background: #f9fafb;
-}
-
-.customer-list-img {
-  width: 65px;
-  height: 65px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-right: 20px;
-  border: 2px solid #2563eb;
-}
-
-/* Customer Info */
-.customer-info {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.customer-name {
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: #111827;
-  margin: 0;
-}
-
-.customer-id {
-  font-size: 0.9rem;
-  color: #6b7280;
-}
-
-.customer-email {
-  font-size: 0.95rem;
-  color: #374151;
-}
-
-.customer-phone {
-  font-size: 0.9rem;
-  color: #4b5563;
-  font-style: italic;
-}
-
-/* ✅ Search Bar */
+/* ---------- Search Bar ---------- */
 .search-input {
   width: 100%;
-  max-width: 420px;
-  margin: 0 auto 25px auto;
+  max-width: 380px;
+  margin: 0 auto 18px auto;
   display: block;
-  padding: 12px 16px;
-  font-size: 16px;
-  border-radius: 10px;
-  border: 1px solid #d1d5db;
+  padding: 9px 12px;
+  font-size: 14.5px;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
   outline: none;
   background: #fff;
-  transition: 0.3s;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: 0.2s;
 }
 
 .search-input:focus {
   border-color: #2563eb;
-  box-shadow: 0 0 8px rgba(37, 99, 235, 0.3);
+  box-shadow: 0 0 6px rgba(37, 99, 235, 0.25);
 }
 
-/* No results message */
+/* ---------- Customer List (Vertical) ---------- */
+.customer-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* space between cards */
+}
+
+/* ---------- Customer Card ---------- */
+.customer-list-item {
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 8px 12px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  transition: all 0.2s ease;
+  cursor: pointer;
+  border: 1px solid #e5e7eb;
+}
+
+.customer-list-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* ---------- Avatar ---------- */
+.customer-list-img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%; /* circular */
+  object-fit: cover;
+  margin-right: 12px;
+  border: 2px solid #2563eb; /* blue border */
+  box-shadow: 0 0 6px rgba(37, 99, 235, 0.25);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.customer-list-item:hover .customer-list-img {
+  transform: scale(1.05);
+  box-shadow: 0 0 8px rgba(37, 99, 235, 0.35);
+}
+
+/* ---------- Info Section ---------- */
+.customer-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  line-height: 1.2;
+}
+
+.customer-name {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1f2937;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.customer-id {
+  font-size: 0.78rem;
+  color: #64748b;
+}
+
+.customer-email {
+  font-size: 0.8rem;
+  color: #334155;
+}
+
+.customer-phone {
+  font-size: 0.78rem;
+  color: #475569;
+  font-style: italic;
+}
+
+/* ---------- Divider (Optional, can be removed if you want) ---------- */
+.customer-list-item + .customer-list-item {
+  border-top: 1px solid #e5e7eb;
+}
+
+/* ---------- No Results Message ---------- */
 .no-results {
   text-align: center;
-  margin-top: 2rem;
-  font-size: 1.1rem;
-  font-weight: 500;
+  margin-top: 1.2rem;
+  font-size: 0.95rem;
   color: #6b7280;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 768px) {
+  .page-title {
+    font-size: 1.3rem;
+    margin-bottom: 14px;
+  }
+
+  .customer-list-item {
+    padding: 7px 10px;
+  }
+
+  .customer-list-img {
+    width: 42px;
+    height: 42px;
+    margin-right: 10px;
+  }
+
+  .customer-name {
+    font-size: 0.92rem;
+  }
+
+  .customer-id,
+  .customer-email,
+  .customer-phone {
+    font-size: 0.72rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .all-customer-container {
+    padding: 12px 8px;
+  }
+
+  .customer-list-item {
+    padding: 6px 8px;
+  }
+
+  .customer-list-img {
+    width: 36px;
+    height: 36px;
+    margin-right: 8px;
+  }
 }
