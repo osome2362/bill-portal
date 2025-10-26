@@ -220,11 +220,23 @@ app.delete("/api/customers", authentic, async (req, res) => {
 });
 
 // Modify Customer Data
+
+//Modify data of customer
 app.put("/api/customers", authentic, async (req, res) => {
-  const updatedCustomer = await customerdata.findByIdAndUpdate(cId, req.body, {
-    new: true,
-  });
-  res.json(updatedCustomer);
+  try {
+    const { cId, ...updateData } = req.body;
+    const updatedCustomer = await customerdata.findOneAndUpdate(
+      { cId },
+      updateData,
+      { new: true }
+    );
+    if (!updatedCustomer)
+      return res.status(404).json({ error: "Customer not found" });
+    res.json(updatedCustomer);
+  } catch (error) {
+    console.error("Error updating customer:", error);
+    res.status(500).json({ error: "Server error" });
+  }
 });
 
 //Customer Transcations
@@ -432,4 +444,5 @@ app.get("/api/reports/today", authentic, async (req, res) => {
 });
 
 app.listen(5000, () => console.log("Server Running..."));
+
 
