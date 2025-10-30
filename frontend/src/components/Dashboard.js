@@ -12,6 +12,12 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
+import {
+  FaUsers,
+  FaUserPlus,
+  FaFileInvoiceDollar,
+  FaChartBar,
+} from "react-icons/fa"; // ✅ Added icons
 import "./styles/Dashboard.css";
 
 ChartJS.register(
@@ -31,10 +37,12 @@ const Dashboard = () => {
     const fetchTodayReport = async () => {
       try {
         const token = localStorage.getItem("token");
-        const res = await axios.get("https://cablebill-backend.onrender.com/api/reports/today", {
-          headers: { Authorization: `Bearer ${token}` },
-        });
-        // ✅ Use the correct key from backend response
+        const res = await axios.get(
+          "https://cablebill-backend.onrender.com/api/reports/today",
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
         setTodayCollected(res.data.totalCollected || 0);
       } catch (error) {
         console.error("Error fetching today's report:", error);
@@ -44,14 +52,18 @@ const Dashboard = () => {
     fetchTodayReport();
   }, []);
 
-  // Example placeholder data for chart
   const monthlyData = [5000, 8000, 6500, 9000, 7000, 10000];
 
+  // ✅ Reordered cards and added icons
   const cards = [
-    { title: "Add Customer", path: "/addcustomer" },
-    { title: "All Customers", path: "/all-customers" },
-    { title: "View Customer", path: "/view-customer" },
-    { title: "Reports", path: "/reports" },
+    { title: "All Customers", path: "/all-customers", icon: <FaUsers /> },
+    { title: "Add Customer", path: "/addcustomer", icon: <FaUserPlus /> },
+    {
+      title: "Today Billed Customers List",
+      path: "/today-billed",
+      icon: <FaFileInvoiceDollar />,
+    },
+    { title: "Reports", path: "/reports", icon: <FaChartBar /> },
   ];
 
   const chartData = {
@@ -86,6 +98,7 @@ const Dashboard = () => {
             className="dashboard-card"
             onClick={() => navigate(card.path)}
           >
+            <div className="icon-wrapper">{card.icon}</div>
             <h2>{card.title}</h2>
           </div>
         ))}
@@ -95,7 +108,6 @@ const Dashboard = () => {
       <div className="today-collection">
         <h2>Today’s Collected Amount: ₹{todayCollected}</h2>
 
-        {/* Monthly Collection Chart */}
         <div className="chart-container">
           <Bar data={chartData} options={chartOptions} />
         </div>
