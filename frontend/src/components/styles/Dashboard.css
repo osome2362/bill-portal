@@ -22,34 +22,43 @@ body {
   font-size: 1.5rem;
 }
 
-/* Card grid layout */
+/* ===== Card grid layout ===== */
 .card-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1.5rem;
-  padding: 2rem;
+  gap: 2rem;
+  padding: 2.5rem;
 }
 
-/* Individual card */
+/* ===== Individual card ===== */
 .dashboard-card {
   background-color: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+  padding: 2rem 1rem;
   text-align: center;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
   cursor: pointer;
+  position: relative;
 }
 
 .dashboard-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  transform: translateY(-6px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.18);
+}
+
+/* Icon styling */
+.icon-wrapper {
+  font-size: 2.5rem;
+  color: #2563eb;
+  margin-bottom: 1rem;
 }
 
 .dashboard-card h2 {
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   color: #1f2937;
   margin: 0;
+  font-weight: 600;
 }
 
 /* ===== Today’s Collection Section ===== */
@@ -59,7 +68,7 @@ body {
   max-width: 850px;
   background-color: #ffffff;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
   text-align: center;
 }
 
@@ -67,6 +76,7 @@ body {
   margin-bottom: 1.5rem;
   font-size: 1.5rem;
   color: #2563eb;
+  font-weight: 600;
 }
 
 /* Chart Container */
